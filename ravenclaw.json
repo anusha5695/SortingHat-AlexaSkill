@@ -1,0 +1,45 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Container",
+                "items": [
+                    {
+                        "type": "Frame",
+                        "width": "100%",
+                        "height": "100%",
+                        "backgroundColor": "#1f3a93FF",
+                        "position": "absolute"
+                    },
+                    {
+                        "type": "Image",
+                        "width": "50%",
+                        "height": "50%",
+                        "source": "https://i.imgur.com/QUrVHSD.png",
+                        "position": "absolute",
+                        "left": "25%",
+                        "top": "25%",
+                        "right": "25%",
+                        "bottom": "25%"
+                    }
+                ],
+                "height": "100%",
+                "width": "100%"
+            }
+        ]
+    }
+}

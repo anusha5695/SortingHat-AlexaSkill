@@ -1,0 +1,239 @@
+{
+    "type": "APL",
+    "version": "1.0",
+    "theme": "dark",
+    "import": [
+        {
+            "name": "alexa-layouts",
+            "version": "1.0.0"
+        }
+    ],
+    "resources": [
+        {
+            "description": "Stock color for the light theme",
+            "colors": {
+                "colorTextPrimary": "#151920"
+            }
+        },
+        {
+            "description": "Stock color for the dark theme",
+            "when": "${viewport.theme == 'dark'}",
+            "colors": {
+                "colorTextPrimary": "#f0f1ef"
+            }
+        },
+        {
+            "description": "Standard font sizes",
+            "dimensions": {
+                "textSizeBody": 41,
+                "textSizePrimary": 38,
+                "textSizeSecondary": 23,
+                "textSizeSecondaryHint": 25
+            }
+        },
+        {
+            "description": "Common spacing values",
+            "dimensions": {
+                "spacingThin": 6,
+                "spacingSmall": 12,
+                "spacingMedium": 24,
+                "spacingLarge": 48,
+                "spacingExtraLarge": 72
+            }
+        },
+        {
+            "description": "Common margins and padding",
+            "dimensions": {
+                "marginTop": 40,
+                "marginLeft": 60,
+                "marginRight": 60,
+                "marginBottom": 40
+            }
+        }
+    ],
+    "styles": {
+        "textStyleBase": {
+            "description": "Base font description; set color",
+            "values": [
+                {
+                    "color": "@colorTextPrimary"
+                }
+            ]
+        },
+        "textStyleBase0": {
+            "description": "Thin version of basic font",
+            "extend": "textStyleBase",
+            "values": {
+                "fontWeight": "100"
+            }
+        },
+        "textStyleBase1": {
+            "description": "Light version of basic font",
+            "extend": "textStyleBase",
+            "values": {
+                "fontWeight": "300"
+            }
+        },
+        "mixinBody": {
+            "values": {
+                "fontSize": "@textSizeBody"
+            }
+        },
+        "mixinPrimary": {
+            "values": {
+                "fontSize": "@textSizePrimary"
+            }
+        },
+        "mixinSecondary": {
+            "values": {
+                "fontSize": "@textSizeSecondary"
+            }
+        },
+        "textStylePrimary": {
+            "extend": [
+                "textStyleBase1",
+                "mixinPrimary"
+            ]
+        },
+        "textStyleSecondary": {
+            "extend": [
+                "textStyleBase0",
+                "mixinSecondary"
+            ]
+        },
+        "textStyleBody": {
+            "extend": [
+                "textStyleBase1",
+                "mixinBody"
+            ]
+        },
+        "textStyleSecondaryHint": {
+            "values": {
+                "fontFamily": "Bookerly",
+                "fontStyle": "italic",
+                "fontSize": "@textSizeSecondaryHint",
+                "color": "@colorTextPrimary"
+            }
+        }
+    },
+    "layouts": {},
+    "mainTemplate": {
+        "description": "********* Full-screen background image **********",
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "when": "${viewport.shape == 'round'}",
+                "type": "Container",
+                "direction": "column",
+                "items": [
+                    {
+                        "type": "Image",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "source": "https://i2.wp.com/luckyjarena.com/wp-content/uploads/2014/07/brown-gradient-background.jpg?ssl=1",
+                        "scale": "best-fill",
+                        "position": "absolute"
+                    },
+                    {
+                        "type": "Container",
+                        "paddingLeft": "@marginLeft",
+                        "paddingRight": "@marginRight",
+                        "paddingBottom": "@marginBottom",
+                        "items": [
+                            {
+                                "type": "Text",
+                                "style": "textStyleHeader",
+                                "height": "80dp",
+                                "textAlign": "center",
+                                "textAlignVertical": "center",
+                                "fontSize": "${payload.bodyTemplate1Data.titleSize}",
+                                "text": "${payload.bodyTemplate1Data.question}"
+                            },
+                            {
+                                "type": "Text",
+                                "style": "textStyleHeader",
+                                "height": "15dp",
+                                "fontSize": "2dp",
+                                "text": ""
+                            },
+                            {
+                                "type": "ScrollView",
+                                "height": "63%",
+                                "width": "100%",
+                                "item": {
+                                    "type": "Text",
+                                    "style": "textStyleBody",
+                                    "textAlign": "center",
+                                    "fontSize": "${payload.bodyTemplate1Data.fontSize}",
+                                    "text": "${payload.bodyTemplate1Data.responses}",
+                                    "speech": "${payload.bodyTemplate1Data.speak}",
+                                    "spacing": "@spacingSmall"
+                                }
+                            }
+                        ],
+                        "top": "20%"
+                    },
+                    {
+                        "type": "Text",
+                        "paddingRight": "20dp",
+                        "fontSize": "30dp",
+                        "style": "textStyleBody",
+                        "text": "${payload.bodyTemplate1Data.score}",
+                        "alignSelf": "center"
+                    },
+                    {
+                        "type": "AlexaFooter"
+                    }
+                ]
+            },
+            {
+                "type": "Container",
+                "height": "100vh",
+                "items": [
+                    {
+                        "type": "AlexaHeader"
+                    },
+                    {
+                        "type": "Image",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "source": "https://i2.wp.com/luckyjarena.com/wp-content/uploads/2014/07/brown-gradient-background.jpg?ssl=1",
+                        "scale": "best-fill",
+                        "position": "absolute"
+                    },
+                    {
+                        "type": "Container",
+                        "paddingLeft": "@marginLeft",
+                        "paddingRight": "@marginRight",
+                        "paddingBottom": "@marginBottom",
+                        "items": [
+                            {
+                                "type": "Text",
+                                "style": "textStyleHeader",
+                                "fontSize": "@textSizeBody",
+                                "text": "${payload.bodyTemplate1Data.question}",
+                                "spacing": "@spacingSmall"
+                            },
+                            {
+                                "type": "ScrollView",
+                                "height": "100%",
+                                "width": "100%",
+                                "item": [
+                                    {
+                                        "type": "Text",
+                                        "style": "textStyleBody",
+                                        "fontSize": "@textSizePrimary",
+                                        "text": "${payload.bodyTemplate1Data.responses}",
+                                        "spacing": "@spacingSmall"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
